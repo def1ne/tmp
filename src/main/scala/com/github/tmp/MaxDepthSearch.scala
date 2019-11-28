@@ -93,7 +93,7 @@ object MaxDepthSearch extends App {
   @tailrec
   def getDepthRec(element: Double, depth: Int): Int = {
     val sqrt = Math.sqrt(element)
-    if (sqrt - Math.floor(sqrt) == 0) getDepthRec(sqrt, depth + 1) else depth
+    if (!sqrt.isNaN && !sqrt.isInfinity && sqrt == Math.rint(sqrt)) getDepthRec(sqrt, depth + 1) else depth
   }
 
   def solution(start: Int, end: Int): Int = {
